@@ -2,121 +2,52 @@
     --bg: #000000;
     --card: #121212;
     --green: #1DB954;
-    --text: #ffffff;
+    --yellow: #F5FF00;
     --red: #ff4d4d;
+    --text: #ffffff;
 }
 
 body {
     background-color: var(--bg);
     color: var(--text);
     font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    display: flex;
-    justify-content: center;
+    margin: 0; display: flex; justify-content: center;
 }
 
-.container {
-    width: 100%;
-    max-width: 450px;
-    padding: 20px;
-}
-
-header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-h1 { font-weight: 900; letter-spacing: -1px; }
+.container { width: 100%; max-width: 450px; padding: 20px; }
+header { text-align: center; margin-bottom: 20px; }
 h1 span { color: var(--green); }
 
-.timer-card, .calorie-card, .calendar-card {
+.timer-card, .calorie-card, .calendar-card, .stat-box {
     background: var(--card);
-    padding: 20px;
-    border-radius: 15px;
-    margin-bottom: 20px;
-    text-align: center;
+    padding: 20px; border-radius: 15px; margin-bottom: 15px; text-align: center;
 }
 
-#countdown {
-    font-size: 3rem;
-    font-weight: bold;
-    color: var(--green);
-    margin: 10px 0;
-}
+#countdown { font-size: 3rem; font-weight: bold; color: var(--green); }
 
-/* Calorie Meter */
-.progress-bar {
-    background: #333;
-    height: 12px;
-    border-radius: 6px;
-    margin: 15px 0;
-    overflow: hidden;
-}
+.progress-bar { background: #333; height: 10px; border-radius: 5px; margin: 15px 0; overflow: hidden; }
+#progress-fill { background: var(--green); height: 100%; width: 100%; transition: width 0.3s; }
 
-#progress-fill {
-    background: var(--green);
-    height: 100%;
-    width: 100%;
-    transition: width 0.3s ease;
-}
-
-.calorie-inputs {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-}
-
+.calorie-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .full-width { grid-column: span 2; }
+input { background: #222; border: 1px solid #444; color: white; padding: 8px; border-radius: 8px; width: 80%; }
 
-input {
-    background: #222;
-    border: 1px solid #444;
-    color: white;
-    padding: 10px;
-    border-radius: 8px;
-    width: 80%;
-    text-align: center;
-}
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.stat-box { padding: 10px; margin-bottom: 0; }
+.val { display: block; font-size: 1.5rem; font-weight: bold; }
+.lbl { font-size: 0.7rem; text-transform: uppercase; opacity: 0.7; }
 
-/* Stats & Calendar */
-.stats-row {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-}
+.action-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+.btn { border: none; padding: 12px; border-radius: 10px; font-weight: bold; cursor: pointer; }
+.btn-pause { background: var(--yellow); color: black; }
+.btn-relapse { background: var(--red); color: white; }
+.btn-undo { background: #333; color: white; grid-column: span 2; }
 
-.stat-box {
-    background: var(--card);
-    flex: 1;
-    padding: 15px;
-    border-radius: 15px;
-    text-align: center;
-}
+.calendar-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+.calendar-nav button { background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
 
-#relapse-btn {
-    background: transparent;
-    border: 1px solid var(--red);
-    color: var(--red);
-    border-radius: 15px;
-    cursor: pointer;
-}
-
-.calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 5px;
-    margin-top: 10px;
-}
-
-.day {
-    aspect-ratio: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8rem;
-    border-radius: 4px;
-    background: #222;
-}
-
-.day.success { background: var(--green); color: black; font-weight: bold; }
+.calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; }
+.day { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; border-radius: 50%; background: #222; }
+.day.success { background: var(--green); color: black; }
 .day.relapse { background: var(--red); }
+.day.paused { background: var(--yellow); color: black; }
