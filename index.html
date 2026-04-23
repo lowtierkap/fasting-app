@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FastiTrack | 16:8</title>
+    <title>FastiTrack Pro | 16:8</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <header>
             <h1>FASTI<span>TRACK</span></h1>
-            <div id="date-display"></div>
         </header>
 
         <section class="timer-card">
@@ -26,35 +25,30 @@
             </div>
             
             <div class="calorie-inputs">
-                <div class="col">
-                    <label>Meal 1</label>
-                    <input type="number" id="meal1" placeholder="0" oninput="updateCalories()">
-                </div>
-                <div class="col">
-                    <label>Meal 2</label>
-                    <input type="number" id="meal2" placeholder="0" oninput="updateCalories()">
-                </div>
-                <div class="col full-width">
-                    <label>Snacks</label>
-                    <input type="number" id="snacks" placeholder="0" oninput="updateCalories()">
-                </div>
+                <div class="col"><label>Meal 1</label><input type="number" id="meal1" oninput="updateCalories()"></div>
+                <div class="col"><label>Meal 2</label><input type="number" id="meal2" oninput="updateCalories()"></div>
+                <div class="col full-width"><label>Snacks</label><input type="number" id="snacks" oninput="updateCalories()"></div>
             </div>
         </section>
 
-        <section class="stats-row">
-            <div class="stat-box">
-                <span class="val" id="streak-count">0</span>
-                <span class="lbl">Streak</span>
-            </div>
-            <div class="stat-box">
-                <span class="val" id="relapse-count" style="color: #ff4d4d;">0</span>
-                <span class="lbl">Relapses</span>
-            </div>
-            <button id="relapse-btn" onclick="logRelapse()">I Relapsed Today</button>
+        <section class="stats-grid">
+            <div class="stat-box"><span class="val" id="streak-count">0</span><span class="lbl">Streak</span></div>
+            <div class="stat-box"><span class="val" id="relapse-count" style="color: #ff4d4d;">0</span><span class="lbl">Relapses</span></div>
+            <div class="stat-box"><span class="val" id="pause-count" style="color: #F5FF00;">0</span><span class="lbl">Paused</span></div>
         </section>
+
+        <div class="action-buttons">
+            <button class="btn btn-pause" onclick="logDay('paused')">Pause Streak</button>
+            <button class="btn btn-relapse" onclick="logDay('relapse')">I Relapsed</button>
+            <button class="btn btn-undo" onclick="undoToday()">Undo Today</button>
+        </div>
 
         <section class="calendar-card">
-            <h3 id="month-name">Month</h3>
+            <div class="calendar-nav">
+                <button onclick="changeMonth(-1)">&#8249;</button>
+                <h3 id="month-name">Month</h3>
+                <button onclick="changeMonth(1)">&#8250;</button>
+            </div>
             <div class="calendar-grid" id="calendar-grid"></div>
         </section>
     </div>
