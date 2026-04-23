@@ -1,1 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastiTrack | 16:8</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>FASTI<span>TRACK</span></h1>
+            <div id="date-display"></div>
+        </header>
 
+        <section class="timer-card">
+            <h2 id="timer-status">Calculating...</h2>
+            <div id="countdown">00:00:00</div>
+            <p>Window: 12:00 PM - 8:00 PM</p>
+        </section>
+
+        <section class="calorie-card">
+            <div class="meter-container">
+                <div class="meter-label">Remaining: <span id="remaining-calories">2000</span> kcal</div>
+                <div class="progress-bar"><div id="progress-fill"></div></div>
+            </div>
+            
+            <div class="calorie-inputs">
+                <div class="col">
+                    <label>Meal 1</label>
+                    <input type="number" id="meal1" placeholder="0" oninput="updateCalories()">
+                </div>
+                <div class="col">
+                    <label>Meal 2</label>
+                    <input type="number" id="meal2" placeholder="0" oninput="updateCalories()">
+                </div>
+                <div class="col full-width">
+                    <label>Snacks</label>
+                    <input type="number" id="snacks" placeholder="0" oninput="updateCalories()">
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-row">
+            <div class="stat-box">
+                <span class="val" id="streak-count">0</span>
+                <span class="lbl">Streak</span>
+            </div>
+            <div class="stat-box">
+                <span class="val" id="relapse-count" style="color: #ff4d4d;">0</span>
+                <span class="lbl">Relapses</span>
+            </div>
+            <button id="relapse-btn" onclick="logRelapse()">I Relapsed Today</button>
+        </section>
+
+        <section class="calendar-card">
+            <h3 id="month-name">Month</h3>
+            <div class="calendar-grid" id="calendar-grid"></div>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
